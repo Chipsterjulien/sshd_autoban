@@ -1,0 +1,26 @@
+# ------------ Freyermuth Julien ------------
+# Email : julien.chipster@gmail.com
+#
+# ------------ Sshd_autoban.py ------------
+# Language : python v3
+# Depend : yaml-python, python-requests
+# Description : A ssh autoban for fast and slow brute force attack
+# Long description : I wrote this script for fun and learn python 3. This script look ssh log ("journalctl", syslog-ng or rsyslog). It connect with a local socket. This script can
+#                    ban agressors with iptables, shorewall or hosts.deny (actually) and it' efficient with fast and slow brute force attack.
+#                    It send abuse mail with whois command and regexp
+#
+# ** Changelog
+#
+#    v0.3 - Add a separate process to read/write file. Solve strange bugs
+#
+#    v0.2 - Resolve a bug in load banned list of ip
+#         - Remove potential duplicate ip in the banned list
+#         - Remove a bug when I split time.time()
+#         - Adding the possibility of read systemd, syslog-ng and rsyslog
+#         - Adding 3 methods of ban: hosts.deny, iptables & shorewall
+#         - Adding cleanup fonction
+#         - Adding mail script to send abuse mail
+#         - Using multiprocess
+#
+#    v0.1 - Create this script
+# **
