@@ -6,6 +6,7 @@
 # ** Changelog
 #
 #    v0.3 - Add a separate process to read/write file. Solve strange bugs
+#         - Solve 2 blocking bugs in clean_process and read_write_process
 #
 #    v0.2 - Resolve a bug in load banned list of ip
 #         - Remove potential duplicate ip in the banned list
@@ -226,7 +227,7 @@ def clean_process(lock, cfg, ban_file, rwqueue, clean_queue):
 
 	while loop:
 		with lock:
-			rwqueue.put(Thing(open_file=ban_file, check_process=False, read=False))
+			rwqueue.put(Thing(open_file=ban_file, check_process=False, read=True))
 
 		hash_ip  = {}
 		f        = clean_queue.get()
@@ -406,7 +407,7 @@ def read_write_process(lock, rwqueue, check_queue, clean_queue):
 					target.write(obj.data)
 
 			else:
-				with open(obj.open_file, 'r') as target:
+				with open(obj.open_file, 'w') as target:
 					target.write(obj.data)
 
 
