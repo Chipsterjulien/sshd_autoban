@@ -263,14 +263,17 @@ def clean_process(lock, cfg, ban_file, rwqueue, clean_queue):
 				rwqueue.put(Thing(open_file='/etc/hosts.deny', check_process=False, read=False, add=False, data=string2))
 
 		elif cfg['ban type'] == 'shorewall':
+			save = False
 			for ip, hour in hash_ip.items():
 				if hour + period < now:
 					os.system('shorewall allow %s' %(ip))
+					save = True
 				else:
 					new_hash[ip] = hour
 					string  += str(ip) + ' ' + str(hour) + '\n'
 
-			os.system('shorewall save')
+			if save:
+				os.system('shorewall save')
 
 			with lock:
 				rwqueue.put(Thing(open_file=ban_file, check_process=False, read=False, add=False, data=string))
