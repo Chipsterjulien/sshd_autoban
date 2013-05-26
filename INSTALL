@@ -1,19 +1,26 @@
-# How to install
-# ven. 12 avril 2013 à 13h31
+Thanks for downloading duty.
 
+To install it, make sure you have Python 3.3 or greater installed. Then run
+this command from the command prompt:
+
+	python setup.py install (in coding)
+
+If you're upgrading from a previous version, you need to remove it first.
+
+AS AN ALTERNATIVE, you can just:
 
 1. Copy sshd_autoban.py to /usr/bin/sshd_autoban and mailer_python.py to /usr/bin/mailer_python
 
 2. Create /etc/sshd_autoban directory
 
-3. Copy sshd_autoban_example.conf to /etc/sshd_autoban
+3. Copy sshd_autoban_example.conf to /etc/sshd_autoban/sshd_autoban.conf
 
 4. If you use systemd, copy system_d to/usr/lib/systemd/system/sshd_autoban.service
 
 5. Create /var/log/sshd_autoban directory
 
 6. Fixing some right :
-		chmod 644 "/etc/sshd_autoban/sshd_autoban_example.conf"
+		chmod 644 "/etc/sshd_autoban/sshd_autoban.conf"
 		chmod 644 "/var/log/sshd_autoban"
 		chmod 755 "/usr/bin/sshd_autoban"
 		chmod 755 "/usr/bin/mailer_python"
