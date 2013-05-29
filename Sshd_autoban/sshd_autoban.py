@@ -1,24 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
-#
-# - sshd_autoban.py - v0.3 -
-# ** Changelog
-#
-#    v0.3 - Add a separate process to read/write file. Solve strange bugs
-#         - Solve 2 blocking bugs in clean_process and read_write_process
-#
-#    v0.2 - Resolve a bug in load banned list of ip
-#         - Remove potential duplicate ip in the banned list
-#         - Remove a bug when I split time.time()
-#         - Adding the possibility of read systemd, syslog-ng and rsyslog
-#         - Adding 3 methods of ban: hosts.deny, iptables & shorewall
-#         - Adding cleanup fonction
-#         - Adding mail script to send abuse mail
-#         - Using multiprocess
-#
-#    v0.1 - Create this script
-# **
+
+
+
+
+__author__    = "Julien Freyermuth"
+__copyright__ = "Copyright (c) 2013, Julien Freyermuth"
+__license__   = "GPL v3"
+__version__   = "0.3"
 
 
 

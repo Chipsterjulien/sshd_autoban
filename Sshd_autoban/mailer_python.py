@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
-#
-#
-# - mailer_python - v0.2
+
+__author__    = "Julien Freyermuth"
+__copyright__ = "Copyright (c) 2013, Julien Freyermuth"
+__license__   = "GPL v3"
+__version__   = "0.2"
+
+
 # ** Changelop
 #
 #    v0.2 - Adding config file
