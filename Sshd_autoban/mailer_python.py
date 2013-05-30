@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__author__    = "Julien Freyermuth"
-__copyright__ = "Copyright (c) 2013, Julien Freyermuth"
-__license__   = "GPL v3"
-__version__   = "0.2"
+
+__author__           = "Julien Freyermuth"
+__copyright__        = "Copyright (c) 2013, Julien Freyermuth"
+__license__          = "GPL v3"
+__version__          = "0.2"
+__description__      = "Script who sent email with gmail (or other)"
 
 
 # ** Changelop
