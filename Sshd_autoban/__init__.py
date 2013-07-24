@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU General Public License
 ######################################################################
 
+
 __author__           = "Julien Freyermuth"
 __author_email__     = "julien [dote] chipster [hate] gmail [dote] com"
 __copyright__        = "Copyright (c) 2013, Julien Freyermuth"
@@ -31,8 +32,8 @@ __license__          = "GPLv3"
 __name__             = "sshd_autoban"
 __platforms__        = "GNU/Linux"
 __url__              = "https://github.com/Chipsterjulien/sshd_autoban"
-__version__          = '0.3.0'
-__version_info__     = (0, 3, 0, '', 0)
+__version__          = '0.3.1'
+__version_info__     = (0, 3, 1, '', 0)
 
 
 from .banfunc import banfunc
@@ -41,7 +42,7 @@ from .clean_process import clean_process
 from .init_connection import init_connection
 from .ip import Ip
 from .load_banned_ip import load_banned_ip
+from .mylog import *
 from .read_conf_file import read_conf_file
 from .read_write_process import read_write_process
 from .thing import Thing
-from .mylog import *
