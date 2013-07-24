@@ -4,3 +4,4 @@ include LICENSE
 include MANIFEST.in
 include README.rst
 recursive-include Sshd_autoban *
+recursive-include cfg *
