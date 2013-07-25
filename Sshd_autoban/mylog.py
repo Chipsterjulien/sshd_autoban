@@ -15,8 +15,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-#activity = '/var/log/sshd_autoban/main.log'
-activity = 'main.log'
+activity = '/var/log/sshd_autoban/main.log'
 
 # Create the log object
 logger = logging.getLogger()

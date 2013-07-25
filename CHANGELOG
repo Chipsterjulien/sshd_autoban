@@ -2,6 +2,7 @@
 
    v0.3 - Add a separate process to read/write file. Solve strange bugs
         - Solve 2 blocking bugs in clean_process and read_write_process
+        - Split in many files and follow pep8
 
    v0.2 - Resolve a bug in load banned list of ip
         - Remove potential duplicate ip in the banned list
