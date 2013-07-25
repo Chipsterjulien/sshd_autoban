@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
+It's a class who save informations about an IP
 """
+
+import time
 
 
 class Ip():

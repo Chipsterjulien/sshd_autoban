@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
+It's a process who is the only one to read or write file
 """
 
 import os

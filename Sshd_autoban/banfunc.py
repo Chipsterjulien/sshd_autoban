@@ -9,14 +9,14 @@ import socket
 import time
 
 from Sshd_autoban.thing import Thing
-from Sshd_autoban.mylog import logging
+from Sshd_autoban.mylog import logger
 
 
 def banfunc(lock, cfg, ban_file, the_ip, rwqueue, check_queue):
     with lock:
         rwqueue.put(Thing(open_file=ban_file, check_process=True, read=True))
 
-    f      = check_queue.get()
+    f = check_queue.get()
     tab_ip = []
 
     for line in f:
@@ -51,7 +51,7 @@ def banfunc(lock, cfg, ban_file, the_ip, rwqueue, check_queue):
                           data=string))
 
     # On écrit dans le log
-    logging.warning(the_ip + " banned !")
+    logger.warning(the_ip + " banned !")
 
     # On envoie un mail sur l'abuse
     os.system("/usr/bin/mailer_python {0}".format(the_ip))

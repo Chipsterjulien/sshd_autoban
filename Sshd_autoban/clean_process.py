@@ -7,7 +7,7 @@ import sys
 import time
 import os
 
-from Sshd_autoban.mylog import logging
+from Sshd_autoban.mylog import logger
 from Sshd_autoban.thing import Thing
 
 def clean_process(lock, cfg, ban_file, rwqueue, clean_queue):
@@ -21,9 +21,8 @@ def clean_process(lock, cfg, ban_file, rwqueue, clean_queue):
     elif cfg['cleanup period'] == 'month':
         period = 3600 * 24 * 7 * 4
     else:
-        print("Unknown cleanup period in config file !")
-        logging.critical("Unknown cleanup period in config file !")
-        sys.exit(2)
+        logger.warning("Unknown cleanup period in config file !")
+        sys.exit(1)
 
     while loop:
         with lock:
@@ -41,7 +40,7 @@ def clean_process(lock, cfg, ban_file, rwqueue, clean_queue):
 
         new_hash = {}
         string   = str()
-        now      = time.time()                   # On récupère l'heure
+        now      = time.time() # On récupère l'heure
 
         if cfg['ban type'] == 'iptables':
             for ip, hour in hash_ip.items():

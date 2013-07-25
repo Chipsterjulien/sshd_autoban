@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
+It's a process who check ip in log
 """
 
 import re
@@ -8,7 +9,7 @@ import socket
 import sys
 import time
 
-from Sshd_autoban.mylog import logging
+from Sshd_autoban.mylog import logger
 from Sshd_autoban.ip import Ip
 from Sshd_autoban.banfunc import banfunc
 
@@ -24,7 +25,7 @@ def check_ip_process(lock, cfg, ban_file, sock, rwqueue, check_queue):
             # On récupère les données sur la socket
             data = sock.recv(4096)
         except socket.timeout:
-            logging.critical("Timeout")
+            logger.warning("Timeout")
             loop = False
 
         # Si data est nul c'est que la connexion a été coupée
@@ -32,8 +33,8 @@ def check_ip_process(lock, cfg, ban_file, sock, rwqueue, check_queue):
             loop = False
         # Si la taille est négative, c'est qu'il y a eu une erreur de lecture
         if len(data) < 0:
-            logging.critical("Misreading !")
-            sys.exit(2)
+            logger.warning("Misreading !")
+            sys.exit(1)
 
         # On parcourt toutes les lettres reçues
         for letter in data.decode('utf8', 'ignore'):
@@ -62,7 +63,7 @@ def check_ip_process(lock, cfg, ban_file, sock, rwqueue, check_queue):
                                 # bannir, on ne va pas plus loin
                                 if the_ip in cfg['authorised ip']:
                                     # On l'indique quand même dans les logs
-                                    logging.warning('The user identified by  \
+                                    logger.warning('The user identified by  \
                                                     the ip address {0} gave  \
                                                     a wrong password ! \
                                                     '.format(the_ip))

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
+It's a class who can transfert informations between different process
 """
 
 

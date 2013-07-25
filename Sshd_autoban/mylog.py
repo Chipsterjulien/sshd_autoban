@@ -15,12 +15,13 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-activity = '/var/log/sshd_autoban/main.log'
+#activity = '/var/log/sshd_autoban/main.log'
+activity = 'main.log'
 
 # Create the log object
 logger = logging.getLogger()
-# Set the level to INFO
-logger.setLevel(logging.INFO)
+# Set the level to DEBUG
+logger.setLevel(logging.DEBUG)
 
 # Create a design for log format
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
