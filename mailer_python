@@ -55,7 +55,7 @@ except OSError as e:
     sys.exit(1)
 
 ip  = sys.argv[1]
-out = subprocess.getoutput('whois {0}'.format(ip)).split('n')
+out = subprocess.getoutput('whois {0}'.format(ip)).split('\n')
 to  = None
 
 for line in out:
