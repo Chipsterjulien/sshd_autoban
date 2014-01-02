@@ -43,7 +43,8 @@ CLASSIFIERS = [
 
 
 DATA_FILES = [('/etc/sshd_autoban', ['cfg/sshd_autoban_example.conf']),
-              ('/usr/lib/systemd/system', ['cfg/sshd_autoban.service'])]
+              ('/usr/lib/systemd/system', ['cfg/sshd_autoban.service']),
+			  ('/var/log/sshd_autoban', ['log/error.log']),]
 SCRIPTS = ['sshd_autoban', 'mailer_python']
 
 
