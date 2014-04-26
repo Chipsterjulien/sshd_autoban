@@ -4,6 +4,8 @@
 """
 
 import os
+import socket
+
 
 def load_banned_ip(cfg, ban_file):
     # On récupère les adresses ip bannies
