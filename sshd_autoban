@@ -1,56 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-"""
 
-import sys
-import logging
-import os
-from multiprocessing import Process, Lock, Queue
-
-from Sshd_autoban.check_ip_process import check_ip_process
-from Sshd_autoban.clean_process import clean_process
-from Sshd_autoban.init_connection import init_connection
-from Sshd_autoban.load_banned_ip import load_banned_ip
-from Sshd_autoban.read_conf_file import read_conf_file
-from Sshd_autoban.read_write_process import read_write_process
+from Sshd_autoban.main import main
 
 
 if __name__ == "__main__":
-    ban_file  = "/var/log/sshd_autoban/banned_ip"
-    conf_file = "/etc/sshd_autoban/sshd_autoban.conf"
-    log_file  = "/var/log/sshd_autoban/main.log"
-
-    lock        = Lock()
-    rwqueue     = Queue()
-    check_queue = Queue()
-    clean_queue = Queue()
-
-    logging.info("\n*** Starting logs analysis ***\n\n")
-
-    # On regarde si le fichier de configuration existe
-    if not os.path.exists(conf_file):
-        logging.critical("File \"{0}\" not found !".format(conf_file))
-        sys.exit(2)
-
-    # On charge la configuration
-    conf = read_conf_file(conf_file)
-
-    if conf['ban type'] == 'iptables':
-        # On rebannie les adresses IP qui sont toujours dans ban_file
-        load_banned_ip(conf, ban_file)
-
-    # On initialise la connexion
-    sock = init_connection(conf)
-
-    # Si le system est configurer pour utiliser journalctl
-    if conf['system'] == 'journalctl':
-        # On envoie un message à journalctl
-        sock.send("GET /entries?boot&follow HTTP/1.1\r\n\r\n".encode('ascii'))
-
-    # Lancement des processus parallélisés
-    Process(target=read_write_process, args=(lock, rwqueue, check_queue, clean_queue)).start()
-    Process(target=check_ip_process, args=(lock, conf, ban_file, sock, rwqueue, check_queue)).start()
-    if conf['cleanup period'] != 'never':
-        Process(target=clean_process, args=(lock, conf, ban_file, rwqueue, clean_queue)).start()
+    main()

@@ -1,8 +1,9 @@
 include AUTHORS
-include INSTALL
+include CHANGELOG
 include LICENSE
 include MANIFEST.in
-include README.rst
-recursive-include Sshd_autoban *
+include sshd_autoban
+include README.md
+include setup.py
 recursive-include cfg *
-recursive-include log *
+recursive-include Sshd_autoban *

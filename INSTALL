@@ -23,4 +23,3 @@ AS AN ALTERNATIVE, you can just:
 		chmod 644 "/etc/sshd_autoban/sshd_autoban.conf"
 		chmod 644 "/var/log/sshd_autoban"
 		chmod 755 "/usr/bin/sshd_autoban"
-		chmod 755 "/usr/bin/mailer_python"

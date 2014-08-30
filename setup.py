@@ -26,15 +26,11 @@ try:
 except ImportError:
     from distutils.core import setup, find_packages
 
-
-import Sshd_autoban
-
-
 CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
     'Environment :: Console',
     'Intended Audience :: System Administrators',
-    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    'License :: OSI Approved',
     'Natural Language :: English',
     'Operating System :: POSIX :: Linux',
     'Programming Language :: Python :: 3',
@@ -42,26 +38,31 @@ CLASSIFIERS = [
 ]
 
 
-DATA_FILES = [('/etc/sshd_autoban', ['cfg/sshd_autoban_example.conf']),
-              ('/usr/lib/systemd/system', ['cfg/sshd_autoban.service']),
-			  ('/var/log/sshd_autoban', ['log/error.log']),]
-SCRIPTS = ['sshd_autoban', 'mailer_python']
+DATA_FILES = [('/etc/sshd_autoban', ['cfg/sshd_autoban.conf']),
+              ('/usr/lib/systemd/system', ['cfg/sshd_autoban.service'])]
+              
+SCRIPTS = ['sshd_autoban', ]
 
 
 setup(
-    name             = Sshd_autoban.__name__,
-    version          = Sshd_autoban.__version__,
-    description      = Sshd_autoban.__description__,
-    long_description = Sshd_autoban.__long_description__,
-    author           = Sshd_autoban.__author__,
-    author_email     = Sshd_autoban.__author_email__,
-    url              = Sshd_autoban.__url__,
-    license          = Sshd_autoban.__license__,
-    platforms        = Sshd_autoban.__platforms__,
+    name             = 'sshd_autoban',
+    version          = '0.4',
+    description      = 'A ssh autoban for fast and slow brute force attack',
+    long_description = "I wrote this script for fun and learn python 3. This  \
+                script look ssh log (\"journalctl\", syslog-ng or rsyslog). It \
+                connect with a local socket. This script can ban agressors with \
+                iptables, shorewall or hosts.deny (actually) and it's efficient \
+                with fast and slow brute force attack. It send abuse mail with \
+                whois command and regexp",
+    author           = 'Freyermuth Julien',
+    author_email     = 'julien [dote] chipster [hate] gmail [dote] com',
+    url              = 'https://github.com/Chipsterjulien/sshd_autoban',
+    license          = 'WTFPL',
+    platforms        = 'GNU/Linux',
     data_files       = DATA_FILES,
     packages         = find_packages(),
     include_package_data = True,
     scripts          = SCRIPTS,
-    requires         = ['requests', 'pyyaml', 'python (>=3.3)'],
+    requires         = ['python (>=3.4)'],
     classifiers      = CLASSIFIERS,
 )
