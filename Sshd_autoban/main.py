@@ -302,8 +302,8 @@ def clean_process(*args, **kwargs):
 '{1}'".format(my_split[1], line))
                     continue
 
-                if now_time < (ban_time + period):
-                    period_list.append((ban_time + period) - now_time)
+                if now_time < ban_time:
+                    period_list.append(ban_time - now_time)
                     string += line + '\n'
 
                 else:

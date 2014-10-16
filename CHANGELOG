@@ -2,6 +2,7 @@
 
    v0.4 - Rewriting script
         - Solve some bugs
+        - Solve a bug who double the period where each ip were banned
 
    v0.3 - Add a separate process to read/write file. Solve strange bugs
         - Solve 2 blocking bugs in clean_process and read_write_process
